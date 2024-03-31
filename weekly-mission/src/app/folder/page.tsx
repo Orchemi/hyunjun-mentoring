@@ -5,7 +5,6 @@ import Input from "@components/SharedPage/Input";
 import FolderCard from "@components/FolderPage/FolderCard";
 import Footer from "@components/SharedPage/Footer";
 import {
-  useFolderUserFetch,
   useFolderCardDataFetch,
   useSortedMenusDataFetch,
   useAllMenuDataFetch,
@@ -20,6 +19,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useFolderState } from "@/hooks/useFolderState";
 import { USER_API_URL } from "@constants/url.constant";
+import { User, getUser } from "@/apis/user/getUser.api";
+import { useEffect, useState } from "react";
+import { Nullable } from "@/types/@common/common.type";
 
 export type LinkAddModal = {
   linkModal: boolean;
@@ -46,14 +48,25 @@ function FolderPage() {
     setLinkInput,
   } = useFolderState();
 
-  const { data: userData } = useFolderUserFetch(USER_API_URL.USER);
+  const [user, setUser] = useState<Nullable<User>>(null);
+
+  useEffect(() => {
+    const init = async () => {
+      const user = await getUser(2);
+      setUser(user);
+    };
+
+    init();
+  }, []);
+
   const { data: sortedAllMenus } = useSortedMenusDataFetch(
     USER_API_URL.SORTED_ALL_MENU
   );
+
   const { data: folderData } = useFolderCardDataFetch(subUrl);
   const { data: allMenuData } = useAllMenuDataFetch(USER_API_URL.ALL_MENU);
 
-  console.log(userData); //로그인 부분
+  console.log(user); //로그인 부분
   console.log(sortedAllMenus); //'전체' 메뉴 제외한 메뉴들
   console.log(folderData); // '전체' 메뉴 제외한 메뉴들 데이터
   console.log(allMenuData); // '전체' 메뉴 데이터
@@ -118,9 +131,9 @@ function FolderPage() {
       ></div>
       <div className="page-container">
         <FolderHeader
-          user={userData}
-          imageSource={userData?.data[0]?.image_source}
-          email={userData?.data[0]?.email}
+          user={user}
+          imageSource={user?.image_source}
+          email={user?.email}
           isShowModal={isShowModal}
         />
         {addModal.linkModal ? (

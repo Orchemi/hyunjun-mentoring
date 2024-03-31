@@ -5,8 +5,10 @@ import "./FolderHeader.css";
 import AddLink from "./AddLink";
 import { useMediaQuery } from "react-responsive";
 import Image from "next/image";
+import { User } from "@/apis/user/getUser.api";
+import { Nullable } from "@/types/@common/common.type";
 interface Props {
-  user: UserData | null;
+  user: Nullable<User>;
   imageSource: string | undefined;
   email: string | undefined;
   isShowModal?: (modalState: {
