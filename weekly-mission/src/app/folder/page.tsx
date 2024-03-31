@@ -1,25 +1,24 @@
 "use client";
-import { useState } from "react";
 import "../../../globals.css";
-import FolderHeader from "../../components/FolderPage/FolderHeader";
-import Input from "../../components/SharedPage/Input";
-import FolderCard from "../../components/FolderPage/FolderCard";
-import Footer from "../../components/SharedPage/Footer";
+import FolderHeader from "@components/FolderPage/FolderHeader";
+import Input from "@components/SharedPage/Input";
+import FolderCard from "@components/FolderPage/FolderCard";
+import Footer from "@components/SharedPage/Footer";
 import {
   useFolderUserFetch,
   useFolderCardDataFetch,
   useSortedMenusDataFetch,
   useAllMenuDataFetch,
-} from "../../apis/fetchFolder.api";
-import SortedMenus from "../../components/FolderPage/SortedMenus";
+} from "@apis/fetchFolder.api";
+import SortedMenus from "@components/FolderPage/SortedMenus";
 import { useMediaQuery } from "react-responsive";
-import shareImg from "../../../public/images/share.png";
-import deleteImg from "../../../public/images/delete.png";
-import penImg from "../../../public/images/pen.png";
-import Modal from "../../components/Modal/Modal";
+import shareImg from "@public/images/share.png";
+import deleteImg from "@public/images/delete.png";
+import penImg from "@public/images/pen.png";
+import Modal from "@components/Modal/Modal";
 import Image from "next/image";
 import Link from "next/link";
-import { useFolderState } from "../../hooks/useFolderState";
+import { useFolderState } from "@/hooks/useFolderState";
 export const ALL_MENU_URL = "https://bootcamp-api.codeit.kr/api/users/4/links";
 
 export type LinkAddModal = {

@@ -1,8 +1,8 @@
-import kakaoIcon from "../../../public/images/share-kakao.svg";
-import facebookIcon from "../../../public/images/share-facebook.svg";
-import shareLink from "../../../public/images/share-link.svg";
+import kakaoIcon from "@public/images/share-kakao.svg";
+import facebookIcon from "@public/images/share-facebook.svg";
+import shareLink from "@public/images/share-link.svg";
 import "./ModalShare.css";
-import linkbrary from "../../../public/images/Linkbrary.svg";
+import linkbrary from "@public/images/Linkbrary.svg";
 import Image from "next/image";
 declare global {
   interface Window {

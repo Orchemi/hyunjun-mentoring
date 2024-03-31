@@ -52,7 +52,14 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "paths": {
+      "@/*": ["./src/*"],
+      "@public/*": ["./public/*"],
+      "@apis/*": ["./src/apis/*"],
+      "@components/*": ["./src/components/*"],
+      "@hooks/*": ["./src/hooks/*"]
+    }
   },
   "include": ["src", "react-app-env.d.ts", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

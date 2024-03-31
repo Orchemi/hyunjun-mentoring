@@ -1,6 +1,6 @@
 "use client";
 
-import logoImg from "../../../public/images/Linkbrary.png";
+import logoImg from "@public/images/Linkbrary.png";
 import "./FolderHeader.css";
 import AddLink from "./AddLink";
 import { useMediaQuery } from "react-responsive";

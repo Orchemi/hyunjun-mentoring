@@ -1,6 +1,6 @@
 import styles from "./Input.module.css";
-import eyeOn from "../../../public/images/eye-on.png";
-import eyeOff from "../../../public/images/eye-off.png";
+import eyeOn from "@public/images/eye-on.png";
+import eyeOff from "@public/images/eye-off.png";
 
 import { useState } from "react";
 const Input = ({ isEmailOrPw }: any) => {

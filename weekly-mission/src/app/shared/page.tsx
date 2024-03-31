@@ -1,9 +1,9 @@
 import "../../../globals.css";
-import Header from "../../components/SharedPage/Header";
-import Input from "../../components/SharedPage/Input";
-import Card from "../../components/SharedPage/Card";
-import Footer from "../../components/SharedPage/Footer";
-import { useFetch } from "../../apis/fetchShared.api";
+import Header from "@components/SharedPage/Header";
+import Input from "@components/SharedPage/Input";
+import Card from "@components/SharedPage/Card";
+import Footer from "@components/SharedPage/Footer";
+import { useFetch } from "@apis/fetchShared.api";
 
 export type UserType = {
   id: number;

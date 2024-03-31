@@ -1,6 +1,6 @@
 "use client";
 import "./AddLink.css";
-import link from "../../../public/images/link.png";
+import link from "@public/images/link.png";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 interface Props {

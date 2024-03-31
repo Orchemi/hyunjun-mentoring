@@ -1,8 +1,8 @@
 "use client";
-import imgSrc from "../../../public/images/Search.png";
+import imgSrc from "@public/images/Search.png";
 import "./Header.css";
 import { useMediaQuery } from "react-responsive";
-import closeImg from "../../../public/images/close.png";
+import closeImg from "@public/images/close.png";
 import Image from "next/image";
 interface InputProps {
   linkInput?: string;

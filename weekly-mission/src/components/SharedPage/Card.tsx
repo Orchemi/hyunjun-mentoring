@@ -2,8 +2,8 @@
 
 import "./Card.css";
 import { useMediaQuery } from "react-responsive";
-import noImg from "../../../public/images/noImage.png";
-import kebab from "../../../public/images/kebab.png";
+import noImg from "@public/images/noImage.png";
+import kebab from "@public/images/kebab.png";
 import { Links } from "../../app/shared/page";
 import Image from "next/image";
 import Link from "next/link";
