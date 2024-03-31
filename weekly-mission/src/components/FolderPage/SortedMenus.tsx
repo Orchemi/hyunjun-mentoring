@@ -1,9 +1,10 @@
 "use client";
 
 import "./SortedMenus.css";
-import { ALL_MENU_URL, LinkAddModal } from "../../app/folder/page";
+import { LinkAddModal } from "../../app/folder/page";
 import { useMediaQuery } from "react-responsive";
 import { AllMenuData, SortedMenusData } from "@apis/fetchFolder.api";
+import { USER_API_URL } from "@/constants/url.constant";
 
 interface ButtonProps {
   menuId?: number | undefined;
@@ -31,7 +32,7 @@ const Button = ({
   };
 
   const clickAllMenu = () => {
-    onChangeUrl(ALL_MENU_URL);
+    onChangeUrl(USER_API_URL.ALL_MENU);
     handleChangeTitle("전체");
   };
   return menu ? (
