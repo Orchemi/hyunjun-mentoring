@@ -21,7 +21,7 @@ import { useFolderState } from "@/hooks/useFolderState";
 import { USER_API_URL } from "@constants/url.constant";
 import { User, getUser } from "@/apis/user/getUser.api";
 import { useEffect, useState } from "react";
-import { Nullable } from "@/types/@common/common.type";
+import { Nullable } from "@/types/common.type";
 
 export type LinkAddModal = {
   linkModal: boolean;

@@ -5,8 +5,8 @@ import "./FolderHeader.css";
 import AddLink from "./AddLink";
 import { useMediaQuery } from "react-responsive";
 import Image from "next/image";
-import { User } from "@/apis/user/getUser.api";
-import { Nullable } from "@/types/@common/common.type";
+import { User } from "@apis/user/getUser.api";
+import { Nullable } from "@/types/common.type";
 interface Props {
   user: Nullable<User>;
   isShowModal?: (modalState: {
@@ -23,7 +23,8 @@ const profileAccount = ({ imageSource, email }: User) => {
     </div>
   );
 };
-const FolderHeader: React.FC<Props> = ({ user, isShowModal }) => {
+
+export default function FolderHeader({ user, isShowModal }: Props) {
   const isTablet = useMediaQuery({ maxWidth: 1199 });
 
   return (
@@ -41,6 +42,4 @@ const FolderHeader: React.FC<Props> = ({ user, isShowModal }) => {
       <AddLink setIsShowModal={isShowModal} />
     </>
   );
-};
-
-export default FolderHeader;
+}
