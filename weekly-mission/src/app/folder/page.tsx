@@ -10,7 +10,7 @@ import {
   useFolderCardDataFetch,
   useSortedMenusDataFetch,
   useAllMenuDataFetch,
-} from "../../app/api/useFolderFetch";
+} from "../../apis/fetchFolder.api";
 import SortedMenus from "../../components/FolderPage/SortedMenus";
 import { useMediaQuery } from "react-responsive";
 import shareImg from "../../../public/images/share.png";

@@ -27,11 +27,7 @@
 {
   "compilerOptions": {
     "target": "ES6",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "jsx": "preserve",
     "module": "ESNext",
     "rootDir": "./",
@@ -58,12 +54,6 @@
       }
     ]
   },
-  "include": [
-    "src",
-    "react-app-env.d.ts",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src", "react-app-env.d.ts", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }

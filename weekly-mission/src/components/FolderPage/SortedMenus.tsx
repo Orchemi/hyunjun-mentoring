@@ -3,7 +3,7 @@
 import "./SortedMenus.css";
 import { ALL_MENU_URL, LinkAddModal } from "../../app/folder/page";
 import { useMediaQuery } from "react-responsive";
-import { AllMenuData, SortedMenusData } from "../../app/api/useFolderFetch";
+import { AllMenuData, SortedMenusData } from "../../apis/fetchFolder.api";
 
 interface ButtonProps {
   menuId?: number | undefined;

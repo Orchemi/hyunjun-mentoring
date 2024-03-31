@@ -5,7 +5,7 @@ import ModalDelete from "./ModalDelete";
 import ModalShare from "./ModalShare";
 import ModalLinkAdd from "./ModalLinkAdd";
 import ModalFolderAdd from "./ModalFolderAdd";
-import { FolderCardData, SortedMenusData } from "../../app/api/useFolderFetch";
+import { FolderCardData, SortedMenusData } from "../../apis/fetchFolder.api";
 import Image from "next/image";
 import Link from "next/link";
 interface ModalProps {
