@@ -32,6 +32,7 @@ export type LinkAddModal = {
   linkDeleteModal?: boolean;
   dataUrl?: string;
 };
+
 function FolderPage() {
   const isTablet = useMediaQuery({ maxWidth: 1124 });
   // const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -131,7 +132,7 @@ function FolderPage() {
       ></div>
       <div className="page-container">
         <FolderHeader user={user} isShowModal={isShowModal} />
-        {addModal.linkModal ? (
+        {addModal.linkModal && (
           <Modal
             title="폴더에 추가"
             folderData={folderData?.data}
@@ -139,8 +140,8 @@ function FolderPage() {
             isShowModal={isShowModal}
             linkAddModal={addModal.linkModal}
           />
-        ) : null}
-        {addModal.folderAddModal ? (
+        )}
+        {addModal.folderAddModal && (
           <Modal
             title="폴더 추가"
             folderData={folderData?.data}
@@ -148,8 +149,8 @@ function FolderPage() {
             isShowModal={isShowModal}
             folderAddModal={addModal.folderAddModal}
           />
-        ) : null}
-        {addModal.shareAddModal ? (
+        )}
+        {addModal.shareAddModal && (
           <Modal
             title="폴더 공유"
             folderData={folderData?.data}
@@ -158,8 +159,8 @@ function FolderPage() {
             shareModal={addModal.shareAddModal}
             menusId={menusId}
           />
-        ) : null}
-        {addModal.editAddModal ? (
+        )}
+        {addModal.editAddModal && (
           <Modal
             title="폴더 이름 변경"
             folderData={folderData?.data}
@@ -167,9 +168,9 @@ function FolderPage() {
             isShowModal={isShowModal}
             editModal={addModal.editAddModal}
           />
-        ) : null}
+        )}
 
-        {addModal.deleteAddModal ? (
+        {addModal.deleteAddModal && (
           <Modal
             title="폴더 삭제"
             folderData={folderData?.data}
@@ -177,8 +178,8 @@ function FolderPage() {
             isShowModal={isShowModal}
             deleteModal={addModal.deleteAddModal}
           />
-        ) : null}
-        {addModal.linkDeleteModal ? (
+        )}
+        {addModal.linkDeleteModal && (
           <Modal
             title="링크 삭제"
             folderData={folderData?.data}
@@ -187,7 +188,7 @@ function FolderPage() {
             linkDeleteModal={addModal.linkDeleteModal}
             dataUrl={addModal.dataUrl}
           />
-        ) : null}
+        )}
 
         <Input linkInput={linkInput} handleChangeInput={handleChangeInput} />
         <SortedMenus

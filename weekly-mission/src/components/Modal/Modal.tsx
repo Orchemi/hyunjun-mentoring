@@ -63,14 +63,14 @@ const Modal = ({
         <Link className="modal-button-close" href="/" onClick={handleClickExit}>
           <Image src={buttonClose} alt="닫기" />
         </Link>
-        {linkDeleteModal ? <ModalDelete link={dataUrl} /> : null}
-        {deleteModal ? <ModalDelete /> : null}
-        {editModal ? <ModalEdit /> : null}
-        {shareModal ? <ModalShare menusId={menusId as number} /> : null}
-        {folderAddModal ? <ModalFolderAdd /> : null}
-        {linkAddModal ? (
+        {linkDeleteModal && <ModalDelete link={dataUrl} />}
+        {deleteModal && <ModalDelete />}
+        {editModal && <ModalEdit />}
+        {shareModal && <ModalShare menusId={menusId as number} />}
+        {folderAddModal && <ModalFolderAdd />}
+        {linkAddModal && (
           <ModalLinkAdd folderData={folderData} folderMenus={folderMenus} />
-        ) : null}
+        )}
       </div>
     </div>
   );
