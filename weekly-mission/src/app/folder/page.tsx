@@ -19,7 +19,7 @@ import Modal from "@components/Modal/Modal";
 import Image from "next/image";
 import Link from "next/link";
 import { useFolderState } from "@/hooks/useFolderState";
-export const ALL_MENU_URL = "https://bootcamp-api.codeit.kr/api/users/4/links";
+import { USER_API_URL } from "@constants/url.constant";
 
 export type LinkAddModal = {
   linkModal: boolean;
@@ -46,15 +46,12 @@ function FolderPage() {
     setLinkInput,
   } = useFolderState();
 
-  const userUrl = "https://bootcamp-api.codeit.kr/api/users/1";
-
-  const SortedAllMenusUrl =
-    "https://bootcamp-api.codeit.kr/api/users/4/folders";
-
-  const { data: userData } = useFolderUserFetch(userUrl);
-  const { data: sortedAllMenus } = useSortedMenusDataFetch(SortedAllMenusUrl);
+  const { data: userData } = useFolderUserFetch(USER_API_URL.USER);
+  const { data: sortedAllMenus } = useSortedMenusDataFetch(
+    USER_API_URL.SORTED_ALL_MENU
+  );
   const { data: folderData } = useFolderCardDataFetch(subUrl);
-  const { data: allMenuData } = useAllMenuDataFetch(ALL_MENU_URL);
+  const { data: allMenuData } = useAllMenuDataFetch(USER_API_URL.ALL_MENU);
 
   console.log(userData); //로그인 부분
   console.log(sortedAllMenus); //'전체' 메뉴 제외한 메뉴들

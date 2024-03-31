@@ -58,7 +58,8 @@
       "@public/*": ["./public/*"],
       "@apis/*": ["./src/apis/*"],
       "@components/*": ["./src/components/*"],
-      "@hooks/*": ["./src/hooks/*"]
+      "@hooks/*": ["./src/hooks/*"],
+      "@constants/*": ["./src/constants/*"]
     }
   },
   "include": ["src", "react-app-env.d.ts", ".next/types/**/*.ts"],
