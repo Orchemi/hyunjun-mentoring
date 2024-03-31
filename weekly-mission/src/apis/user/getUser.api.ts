@@ -1,6 +1,6 @@
 import { BASE_URL } from "../../constants/url.constant";
 
-export interface User {
+export interface UserResponse {
   id: number;
   created_at: Date;
   name: string;
@@ -9,6 +9,25 @@ export interface User {
   auth_id: string;
 }
 
+export interface User {
+  id: number;
+  createdAt: Date;
+  name: string;
+  imageSource: string;
+  email: string;
+  authId: string;
+}
+
+const reformData = (user: UserResponse): User => {
+  const { created_at, image_source, auth_id, ...rest } = user;
+  return {
+    ...rest,
+    createdAt: created_at,
+    imageSource: image_source,
+    authId: auth_id,
+  };
+};
+
 export const getUser = async (userId: number): Promise<User> => {
   try {
     const response = await fetch(`${BASE_URL}/users/${userId}`);
@@ -16,7 +35,7 @@ export const getUser = async (userId: number): Promise<User> => {
       throw new Error(`error Status: ${response.status}`);
     }
     const { data } = await response.json();
-    return data[0];
+    return reformData(data[0]);
   } catch (e: any) {
     throw new Error("데이터 불러오기 실패");
   }

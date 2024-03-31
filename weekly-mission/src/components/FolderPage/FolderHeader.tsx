@@ -9,31 +9,13 @@ import { User } from "@/apis/user/getUser.api";
 import { Nullable } from "@/types/@common/common.type";
 interface Props {
   user: Nullable<User>;
-  imageSource: string | undefined;
-  email: string | undefined;
   isShowModal?: (modalState: {
     linkModal: boolean;
     folderAddModal: boolean;
   }) => void;
 }
 
-export interface UserData {
-  data: Datum[];
-}
-
-interface Datum {
-  id: number;
-  created_at: Date;
-  name: string;
-  image_source: string;
-  email: string;
-  auth_id: string;
-}
-const profileAccount = ({ user, imageSource, email }: Props) => {
-  if (!user) {
-    return false;
-  }
-
+const profileAccount = ({ imageSource, email }: User) => {
   return (
     <div className="profile-info">
       <img className="logo" src={imageSource} alt="프로필 이미지" />
@@ -41,12 +23,7 @@ const profileAccount = ({ user, imageSource, email }: Props) => {
     </div>
   );
 };
-const FolderHeader: React.FC<Props> = ({
-  user,
-  imageSource,
-  email,
-  isShowModal,
-}) => {
+const FolderHeader: React.FC<Props> = ({ user, isShowModal }) => {
   const isTablet = useMediaQuery({ maxWidth: 1199 });
 
   return (
@@ -57,11 +34,7 @@ const FolderHeader: React.FC<Props> = ({
             <a href="/">
               <Image alt="로고이미지" src={logoImg} />
             </a>
-            {user ? (
-              profileAccount({ user, imageSource, email })
-            ) : (
-              <button type="submit">Login</button>
-            )}
+            {user ? profileAccount(user) : <button type="submit">Login</button>}
           </div>
         </nav>
       </form>

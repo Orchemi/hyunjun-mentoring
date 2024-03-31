@@ -130,12 +130,7 @@ function FolderPage() {
         }
       ></div>
       <div className="page-container">
-        <FolderHeader
-          user={user}
-          imageSource={user?.image_source}
-          email={user?.email}
-          isShowModal={isShowModal}
-        />
+        <FolderHeader user={user} isShowModal={isShowModal} />
         {addModal.linkModal ? (
           <Modal
             title="폴더에 추가"
