@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../../../globals.css";
 import FolderHeader from "../../components/FolderPage/FolderHeader";
 import Input from "../../components/SharedPage/Input";
@@ -10,7 +10,7 @@ import {
   useFolderCardDataFetch,
   useSortedMenusDataFetch,
   useAllMenuDataFetch,
-} from "../../app/api/useFolderFetch";
+} from "../../api/useFolderFetch";
 import SortedMenus from "../../components/FolderPage/SortedMenus";
 import { useMediaQuery } from "react-responsive";
 import shareImg from "../../../public/images/share.png";
@@ -20,8 +20,9 @@ import Modal from "../../components/Modal/Modal";
 import Image from "next/image";
 import Link from "next/link";
 import { useFolderState } from "../../hooks/useFolderState";
-export const ALL_MENU_URL = "https://bootcamp-api.codeit.kr/api/users/4/links";
-
+import { USER_API_URL } from "../../constants/url.constant";
+import { getUser, User } from "../../api/user/getUser.api";
+import { Nullable } from "../../types/common/common.type";
 export type LinkAddModal = {
   linkModal: boolean;
   folderAddModal: boolean;
@@ -47,17 +48,22 @@ function FolderPage() {
     setLinkInput,
   } = useFolderState();
 
-  const userUrl = "https://bootcamp-api.codeit.kr/api/users/1";
+  const [user, setUser] = useState<Nullable<User>>(null);
+  useEffect(() => {
+    const init = async () => {
+      const user = await getUser(1);
+      setUser(user);
+    };
+    init();
+  }, []);
 
-  const SortedAllMenusUrl =
-    "https://bootcamp-api.codeit.kr/api/users/4/folders";
-
-  const { data: userData } = useFolderUserFetch(userUrl);
-  const { data: sortedAllMenus } = useSortedMenusDataFetch(SortedAllMenusUrl);
+  const { data: sortedAllMenus } = useSortedMenusDataFetch(
+    USER_API_URL.SORTED_ALL_MENU
+  );
   const { data: folderData } = useFolderCardDataFetch(subUrl);
-  const { data: allMenuData } = useAllMenuDataFetch(ALL_MENU_URL);
+  const { data: allMenuData } = useAllMenuDataFetch(USER_API_URL.ALL_MENU);
 
-  console.log(userData); //로그인 부분
+  console.log(user); //로그인 부분
   console.log(sortedAllMenus); //'전체' 메뉴 제외한 메뉴들
   console.log(folderData); // '전체' 메뉴 제외한 메뉴들 데이터
   console.log(allMenuData); // '전체' 메뉴 데이터
@@ -121,12 +127,7 @@ function FolderPage() {
         }
       ></div>
       <div className="page-container">
-        <FolderHeader
-          user={userData}
-          imageSource={userData?.data[0]?.image_source}
-          email={userData?.data[0]?.email}
-          isShowModal={isShowModal}
-        />
+        <FolderHeader user={user} isShowModal={isShowModal} />
         {addModal.linkModal ? (
           <Modal
             title="폴더에 추가"

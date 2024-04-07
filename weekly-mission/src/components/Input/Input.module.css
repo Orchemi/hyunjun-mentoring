@@ -2,22 +2,19 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 400px;
 }
 
 .input {
   /* width: 25rem; */
-  height: 1.5rem;
+  height: 1.2rem;
   padding: 1.8rem 1.5rem;
   border-radius: 0.8rem;
   border: 0.1rem solid rgba(204, 213, 227, 1);
   font-size: 1.2rem;
   line-height: 150%;
-  &:focus {
-    outline: none;
-    border-color: rgba(109, 106, 254, 1);
-  }
+  font-size: 0.875rem;
 }
+
 .password {
 }
 .eye {
@@ -25,4 +22,8 @@
   top: 25px;
   right: 20px;
   width: 25px;
+}
+.errorMessage {
+  margin-top: 10px;
+  color: red;
 }

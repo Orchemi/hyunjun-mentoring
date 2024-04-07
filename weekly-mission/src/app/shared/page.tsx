@@ -3,7 +3,8 @@ import Header from "../../components/SharedPage/Header";
 import Input from "../../components/SharedPage/Input";
 import Card from "../../components/SharedPage/Card";
 import Footer from "../../components/SharedPage/Footer";
-import { useFetch } from "../../app/api/useSharedFetch";
+import { useFetch } from "../../api/useSharedFetch";
+import { SAMPLE_API_URL } from "../../constants/url.constant";
 
 export type UserType = {
   id: number;
@@ -38,11 +39,8 @@ export interface Owner {
   profileImageSource: string;
 }
 export async function SharedPage(): Promise<React.ReactElement> {
-  const userUrl = "https://bootcamp-api.codeit.kr/api/sample/user";
-  const folderUrl = "https://bootcamp-api.codeit.kr/api/sample/folder";
-
-  const userData = await useFetch(userUrl);
-  const folderData = await useFetch(folderUrl);
+  const userData = await useFetch(SAMPLE_API_URL.USER);
+  const folderData = await useFetch(SAMPLE_API_URL.FOLDER);
 
   console.log(userData);
   console.log(folderData);

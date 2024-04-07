@@ -1,0 +1,11 @@
+.signupBtn {
+  color: rgba(109, 106, 254, 1);
+  /* font-family: Pretendard-Regular; */
+}
+.title {
+  display: flex;
+  flex-direction: column;
+}
+.title > div {
+  margin-top: 20px;
+}

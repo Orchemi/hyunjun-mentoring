@@ -1,0 +1,11 @@
+.button {
+  margin-top: 10px;
+  height: 3.5rem;
+  background: linear-gradient(rgba(109, 106, 254, 1), rgba(106, 227, 254, 1));
+  border: none;
+  border-radius: 7px;
+  color: white;
+  font-family: Pretendard-Regular;
+  font-size: 1.125rem;
+  cursor: pointer;
+}

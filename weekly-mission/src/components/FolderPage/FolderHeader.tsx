@@ -5,10 +5,10 @@ import "./FolderHeader.css";
 import AddLink from "./AddLink";
 import { useMediaQuery } from "react-responsive";
 import Image from "next/image";
+import { User } from "../../api/user/getUser.api";
+import { Nullable } from "../../types/common/common.type";
 interface Props {
-  user: UserData | null;
-  imageSource: string | undefined;
-  email: string | undefined;
+  user: Nullable<User>;
   isShowModal?: (modalState: {
     linkModal: boolean;
     folderAddModal: boolean;
@@ -27,24 +27,19 @@ interface Datum {
   email: string;
   auth_id: string;
 }
-const profileAccount = ({ user, imageSource, email }: Props) => {
+const profileAccount = ({ user }: Props) => {
   if (!user) {
     return false;
   }
 
   return (
     <div className="profile-info">
-      <img className="logo" src={imageSource} alt="프로필 이미지" />
-      <div>{email}</div>
+      <img className="logo" src={user?.image_source} alt="프로필 이미지" />
+      <div>{user?.email}</div>
     </div>
   );
 };
-const FolderHeader: React.FC<Props> = ({
-  user,
-  imageSource,
-  email,
-  isShowModal,
-}) => {
+const FolderHeader: React.FC<Props> = ({ user, isShowModal }) => {
   const isTablet = useMediaQuery({ maxWidth: 1199 });
 
   return (
@@ -56,7 +51,7 @@ const FolderHeader: React.FC<Props> = ({
               <Image alt="로고이미지" src={logoImg} />
             </a>
             {user ? (
-              profileAccount({ user, imageSource, email })
+              profileAccount({ user })
             ) : (
               <button type="submit">Login</button>
             )}

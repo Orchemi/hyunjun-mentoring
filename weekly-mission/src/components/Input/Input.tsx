@@ -3,41 +3,76 @@ import eyeOn from "../../../public/images/eye-on.png";
 import eyeOff from "../../../public/images/eye-off.png";
 
 import { useState } from "react";
-const Input = ({ isEmailOrPw }: any) => {
+import Image from "next/image";
+import { UseFormRegister } from "react-hook-form";
+
+interface InputType {
+  errors: any;
+  register: UseFormRegister<{
+    passwordConfirm?: string;
+    email: string;
+    password: string;
+  }>;
+  type: string;
+  placeholder: string;
+}
+
+const Input = ({ type, placeholder, register, errors }: InputType) => {
   const [isEyeOn, setIsEyeOn] = useState(true);
 
   const onChangeEye = () => {
     setIsEyeOn(!isEyeOn);
   };
+
   return (
     <div className={styles.container}>
-      {isEmailOrPw === "email" ? (
-        <input className={`${styles.input} ${styles.email}`} />
-      ) : (
+      {type === "email" && (
         <input
-          type={isEyeOn === true ? "password" : "text"}
-          className={`${styles.input} ${styles.password}`}
+          className={`${styles.input} ${styles.email}`}
+          {...register("email")}
+          placeholder={placeholder}
         />
       )}
 
-      {isEmailOrPw === "password" && (
+      {type === "password" && (
         <>
-          {isEyeOn === true ? (
-            <img
-              className={styles.eye}
-              src={eyeOn}
-              onClick={onChangeEye}
-              alt="비밀번호 보기"
-            />
-          ) : (
-            <img
-              className={styles.eye}
-              onClick={onChangeEye}
-              src={eyeOff}
-              alt="비밀번호 가리기"
-            />
-          )}
+          <input
+            type={isEyeOn ? "password" : "text"}
+            className={`${styles.input} ${styles.password}`}
+            {...register("password")}
+            placeholder={placeholder}
+          />
+          <Image
+            width={25}
+            className={styles.eye}
+            src={isEyeOn ? eyeOn : eyeOff}
+            onClick={onChangeEye}
+            alt="비밀번호 보기"
+          />
         </>
+      )}
+
+      {type === "passwordConfirm" && (
+        <>
+          <input
+            type={isEyeOn ? "password" : "text"}
+            className={`${styles.input} ${styles.password}`}
+            {...register("passwordConfirm")}
+            placeholder={placeholder}
+          />
+          <Image
+            width={25}
+            className={styles.eye}
+            src={isEyeOn ? eyeOn : eyeOff}
+            onClick={onChangeEye}
+            alt="비밀번호 보기"
+          />
+        </>
+      )}
+      {errors && (
+        <small className={styles.errorMessage} role="alert">
+          {errors.message}
+        </small>
       )}
     </div>
   );

@@ -1,5 +1,5 @@
 import "./ModalAdd.css";
-import { FolderCardData, SortedMenusData } from "../../app/api/useFolderFetch";
+import { FolderCardData, SortedMenusData } from "../../api/useFolderFetch";
 
 interface ModalLinkAddProps {
   folderData: FolderCardData[] | undefined;

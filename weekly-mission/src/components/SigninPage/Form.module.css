@@ -1,0 +1,22 @@
+.container {
+  width: 25rem;
+  margin-top: 30px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.snsLogin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(204, 213, 227, 1);
+  height: 4.1rem;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem 0.75rem 1.5rem;
+}
+.snsbtn {
+  display: flex;
+}
